@@ -1,3 +1,4 @@
+#
 # Conditional build:
 %bcond_with	verbose		# verbose build
 
@@ -68,7 +69,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc DESIGN TODO
-%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/dbus-1/system.d/*.conf
+%config(noreplace) %verify(not md5 mtime size) /etc/dbus-1/system.d/*.conf
 %attr(755,root,root) %{_bindir}/knetworkmanager
 %attr(755,root,root) %ghost %{_libdir}/libknmclient.so.?
 %attr(755,root,root) %{_libdir}/libknmclient.so.*.*.*
@@ -93,7 +94,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/services/*.desktop
 %{_datadir}/kde4/services/kded/*.desktop
 %{_datadir}/kde4/servicetypes/*.desktop
-%{_datadir}/applications/kde4/knetworkmanager.desktop                                                                       
+%{_desktopdir}/kde4/knetworkmanager.desktop
 %{_datadir}/autostart/kde4-knetworkmanager-autostart.desktop
 %{_iconsdir}/oxygen/*x*/devices/network-wireless*.png
 %{_iconsdir}/oxygen/*x*/devices/network-wired-activated.png
