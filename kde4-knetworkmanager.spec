@@ -8,7 +8,7 @@
 
 Summary:	Plasma applet that controls network via NetworkManager backend
 Name:		kde4-knetworkmanager
-Version:	4.4.0
+Version:	4.4.1
 Release:	0.%{snap}.1
 License:	GPL v2
 Group:		X11/Applications
@@ -16,7 +16,7 @@ Group:		X11/Applications
 Source0:	%{origname}-%{snap}.tar.gz
 # Source0-md5:	bf7dc624e21c6aa6d75d721e02a55def
 URL:		http://en.opensuse.org/Projects/KNetworkManager
-BuildRequires:	NetworkManager-devel >= 0.7.0
+BuildRequires:	NetworkManager-devel >= 0.7.1
 BuildRequires:	Qt3Support-devel >= %{qtver}
 BuildRequires:	QtCore-devel >= %{qtver}
 BuildRequires:	QtDBus-devel >= %{qtver}
@@ -24,7 +24,7 @@ BuildRequires:	QtGui-devel >= %{qtver}
 BuildRequires:	QtNetwork-devel >= %{qtver}
 BuildRequires:	QtXml-devel >= %{qtver}
 BuildRequires:	automoc4 >= 0.9.88
-BuildRequires:	cmake >= 2.6.2
+BuildRequires:	cmake >= 2.8.0
 BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
 BuildRequires:	kde4-kdelibs-devel >= %{version}
 BuildRequires:	qt4-build >= %{qtver}
