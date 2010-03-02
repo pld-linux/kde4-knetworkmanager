@@ -2,7 +2,7 @@
 # Conditional build:
 %bcond_with	verbose		# verbose build
 
-%define		snap	1092282
+%define		snap	1098080
 %define		qtver	4.6.2
 %define		origname	networkmanagement
 
@@ -14,7 +14,7 @@ License:	GPL v2
 Group:		X11/Applications
 # svn co svn://anonsvn.kde.org/home/kde/trunk/kdereview/networkmanagement
 Source0:	%{origname}-%{snap}.tar.gz
-# Source0-md5:	bf7dc624e21c6aa6d75d721e02a55def
+# Source0-md5:	bbb72cd45cf9b013da510c25d712c90f
 URL:		http://en.opensuse.org/Projects/KNetworkManager
 BuildRequires:	NetworkManager-devel >= 0.7.1
 BuildRequires:	Qt3Support-devel >= %{qtver}
