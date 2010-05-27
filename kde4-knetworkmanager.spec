@@ -2,19 +2,19 @@
 # Conditional build:
 %bcond_with	verbose		# verbose build
 
-%define		snap	1102779
+%define		snap	1131160
 %define		qtver	4.6.2
 %define		origname	networkmanagement
 
 Summary:	Plasma applet that controls network via NetworkManager backend
 Name:		kde4-knetworkmanager
-Version:	4.4.1
+Version:	4.4.80
 Release:	0.%{snap}.1
 License:	GPL v2
 Group:		X11/Applications
 # svn co svn://anonsvn.kde.org/home/kde/trunk/kdereview/networkmanagement
 Source0:	%{origname}-%{snap}.tar.gz
-# Source0-md5:	d7a4cdc57cd107713c44a99896615264
+# Source0-md5:	e55c13fed81a02b801db010f17ba5a58
 URL:		http://en.opensuse.org/Projects/KNetworkManager
 BuildRequires:	NetworkManager-devel >= 0.7.1
 BuildRequires:	Qt3Support-devel >= %{qtver}
@@ -80,6 +80,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %ghost %{_libdir}/libknmui.so.?
 %attr(755,root,root) %{_libdir}/libknmui.so.*.*.*
 %attr(755,root,root) %{_libdir}/libknm_nm.so
+%attr(755,root,root) %{_libdir}/libknmclient.so
+%attr(755,root,root) %{_libdir}/libknminternals.so
+%attr(755,root,root) %{_libdir}/libknmservice.so
+%attr(755,root,root) %{_libdir}/libknmui.so
 %attr(755,root,root) %{_libdir}/libsolidcontrolfuture.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_networkmanagement.so
 %attr(755,root,root) %{_libdir}/kde4/networkmanagement_openvpnui.so
@@ -90,12 +94,13 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/kded_networkmanagement.so
 %attr(755,root,root) %{_libdir}/kde4/networkmanagement_novellvpnui.so
 %attr(755,root,root) %{_libdir}/kde4/networkmanagement_pptpui.so
+%attr(755,root,root) %{_libdir}/kde4/networkmanagement_strongswanui.so
 %{_datadir}/apps/networkmanagement
 %{_datadir}/kde4/services/*.desktop
 %{_datadir}/kde4/services/kded/*.desktop
 %{_datadir}/kde4/servicetypes/*.desktop
 %{_desktopdir}/kde4/knetworkmanager.desktop
-%{_datadir}/autostart/kde4-knetworkmanager-autostart.desktop
 %{_iconsdir}/oxygen/*x*/devices/network-wireless*.png
 %{_iconsdir}/oxygen/*x*/devices/network-wired-activated.png
+%{_iconsdir}/oxygen/*x*/devices/network-defaultroute.png
 %{_iconsdir}/hicolor/32x32/apps/knetworkmanager.png
