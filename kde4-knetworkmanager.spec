@@ -2,19 +2,19 @@
 # Conditional build:
 %bcond_with	verbose		# verbose build
 
-%define		snap	1131160
-%define		qtver	4.6.2
+%define		snap	1144821
+%define		qtver	4.6.3
 %define		origname	networkmanagement
 
 Summary:	Plasma applet that controls network via NetworkManager backend
 Name:		kde4-knetworkmanager
-Version:	4.4.4
+Version:	4.4.5
 Release:	0.%{snap}.1
 License:	GPL v2
 Group:		X11/Applications
 # svn co svn://anonsvn.kde.org/home/kde/trunk/kdereview/networkmanagement
 Source0:	%{origname}-%{snap}.tar.gz
-# Source0-md5:	e55c13fed81a02b801db010f17ba5a58
+# Source0-md5:	c56a57a1166370091c9f0a67877ed032
 URL:		http://en.opensuse.org/Projects/KNetworkManager
 BuildRequires:	NetworkManager-devel >= 0.7.1
 BuildRequires:	Qt3Support-devel >= %{qtver}
