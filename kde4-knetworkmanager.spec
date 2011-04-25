@@ -2,19 +2,21 @@
 # Conditional build:
 %bcond_with	verbose		# verbose build
 
-%define		snap	1144821
+%define		snap	20110425
 %define		qtver	4.6.3
 %define		origname	networkmanagement
 
 Summary:	Plasma applet that controls network via NetworkManager backend
 Name:		kde4-knetworkmanager
-Version:	4.4.5
+Epoch:		1
+Version:	0.9
 Release:	0.%{snap}.1
 License:	GPL v2
 Group:		X11/Applications
-# svn co svn://anonsvn.kde.org/home/kde/trunk/kdereview/networkmanagement
+# git clone http://anongit.kde.org/networkmanagement
 Source0:	%{origname}-%{snap}.tar.gz
-# Source0-md5:	c56a57a1166370091c9f0a67877ed032
+# Source0-md5:	6f6d757dc46398dd5ff3096f998bd5b9
+Patch0:		nm-09-compat.patch
 URL:		http://en.opensuse.org/Projects/KNetworkManager
 BuildRequires:	NetworkManager-devel >= 0.7.1
 BuildRequires:	Qt3Support-devel >= %{qtver}
@@ -27,6 +29,7 @@ BuildRequires:	automoc4 >= 0.9.88
 BuildRequires:	cmake >= 2.8.0
 BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
 BuildRequires:	kde4-kdelibs-devel >= %{version}
+BuildRequires:	mobile-broadband-provider-info-devel
 BuildRequires:	qt4-build >= %{qtver}
 BuildRequires:	qt4-qmake >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.293
@@ -37,7 +40,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Plasma applet that controls network via NetworkManager backend.
 
 %prep
-%setup -q -n %{origname}-%{snap}
+%setup -q -n %{origname}
+%patch0 -p1
 
 %build
 install -d build
@@ -70,7 +74,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc DESIGN TODO
 %config(noreplace) %verify(not md5 mtime size) /etc/dbus-1/system.d/*.conf
-%attr(755,root,root) %{_bindir}/knetworkmanager
 %attr(755,root,root) %ghost %{_libdir}/libknmclient.so.?
 %attr(755,root,root) %{_libdir}/libknmclient.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libknminternals.so.?
@@ -86,21 +89,20 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libknmui.so
 %attr(755,root,root) %{_libdir}/libsolidcontrolfuture.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_networkmanagement.so
-%attr(755,root,root) %{_libdir}/kde4/networkmanagement_openvpnui.so
-%attr(755,root,root) %{_libdir}/kde4/networkmanagement_vpncui.so
 %attr(755,root,root) %{_libdir}/kde4/plasma_applet_networkmanagement.so
+%attr(755,root,root) %{_libdir}/kde4/plasma_engine_networkmanagement.so
 %attr(755,root,root) %{_libdir}/kde4/libexec/networkmanagement_configshell
 %attr(755,root,root) %{_libdir}/kde4/kcm_networkmanagement_tray.so
 %attr(755,root,root) %{_libdir}/kde4/kded_networkmanagement.so
 %attr(755,root,root) %{_libdir}/kde4/networkmanagement_novellvpnui.so
+%attr(755,root,root) %{_libdir}/kde4/networkmanagement_openvpnui.so
 %attr(755,root,root) %{_libdir}/kde4/networkmanagement_pptpui.so
 %attr(755,root,root) %{_libdir}/kde4/networkmanagement_strongswanui.so
+%attr(755,root,root) %{_libdir}/kde4/networkmanagement_vpncui.so
 %{_datadir}/apps/networkmanagement
 %{_datadir}/kde4/services/*.desktop
 %{_datadir}/kde4/services/kded/*.desktop
 %{_datadir}/kde4/servicetypes/*.desktop
-%{_desktopdir}/kde4/knetworkmanager.desktop
 %{_iconsdir}/oxygen/*x*/devices/network-wireless*.png
 %{_iconsdir}/oxygen/*x*/devices/network-wired-activated.png
 %{_iconsdir}/oxygen/*x*/devices/network-defaultroute.png
-%{_iconsdir}/hicolor/32x32/apps/knetworkmanager.png
