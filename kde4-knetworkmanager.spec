@@ -18,7 +18,7 @@ Source0:	%{origname}-%{snap}.tar.gz
 # Source0-md5:	6f6d757dc46398dd5ff3096f998bd5b9
 Patch0:		nm-09-compat.patch
 URL:		http://en.opensuse.org/Projects/KNetworkManager
-BuildRequires:	NetworkManager-devel >= 0.7.1
+BuildRequires:	NetworkManager-devel >= 2:0.9.0
 BuildRequires:	Qt3Support-devel >= %{qtver}
 BuildRequires:	QtCore-devel >= %{qtver}
 BuildRequires:	QtDBus-devel >= %{qtver}
