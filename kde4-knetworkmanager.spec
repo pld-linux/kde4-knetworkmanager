@@ -2,8 +2,8 @@
 # Conditional build:
 %bcond_with	verbose		# verbose build
 
-%define		snap	20110425
-%define		qtver	4.6.3
+%define		snap	20110919
+%define		qtver	4.6.4
 %define		origname	networkmanagement
 
 Summary:	Plasma applet that controls network via NetworkManager backend
@@ -13,12 +13,12 @@ Version:	0.9
 Release:	0.%{snap}.1
 License:	GPL v2
 Group:		X11/Applications
-# git clone http://anongit.kde.org/networkmanagement
+# git clone git://anongit.kde.org/networkmanagement
+# git checkout nm09 (until is merged to master)
 Source0:	%{origname}-%{snap}.tar.gz
-# Source0-md5:	6f6d757dc46398dd5ff3096f998bd5b9
-Patch0:		nm-09-compat.patch
+# Source0-md5:	48e0d3eb19ff53f472d6c5e7a557ee46
 URL:		http://en.opensuse.org/Projects/KNetworkManager
-BuildRequires:	NetworkManager-devel >= 0.7.1
+BuildRequires:	NetworkManager-devel >= 0.9.0
 BuildRequires:	Qt3Support-devel >= %{qtver}
 BuildRequires:	QtCore-devel >= %{qtver}
 BuildRequires:	QtDBus-devel >= %{qtver}
@@ -30,6 +30,8 @@ BuildRequires:	cmake >= 2.8.0
 BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
 BuildRequires:	kde4-kdelibs-devel >= %{version}
 BuildRequires:	mobile-broadband-provider-info-devel
+BuildRequires:	openconnect-devel >= 3.12
+BuildRequires:	openssl-devel
 BuildRequires:	qt4-build >= %{qtver}
 BuildRequires:	qt4-qmake >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.293
@@ -41,7 +43,6 @@ Plasma applet that controls network via NetworkManager backend.
 
 %prep
 %setup -q -n %{origname}
-%patch0 -p1
 
 %build
 install -d build
@@ -81,6 +82,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %ghost %{_libdir}/libknmservice.so.?
 %attr(755,root,root) %{_libdir}/libknmservice.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libknmui.so.?
+%attr(755,root,root) %ghost %{_libdir}/libknmservice.so.?
+%attr(755,root,root) %{_libdir}/libsolidcontrolnm09.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libsolidcontrolnm09.so.?
+%attr(755,root,root) %{_libdir}/libsolidcontrolnm09ifaces.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libsolidcontrolnm09ifaces.so.?
 %attr(755,root,root) %{_libdir}/libknmui.so.*.*.*
 %attr(755,root,root) %{_libdir}/libknm_nm.so
 %attr(755,root,root) %{_libdir}/libknmclient.so
@@ -96,13 +102,16 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/kded_networkmanagement.so
 %attr(755,root,root) %{_libdir}/kde4/networkmanagement_novellvpnui.so
 %attr(755,root,root) %{_libdir}/kde4/networkmanagement_openvpnui.so
+%attr(755,root,root) %{_libdir}/kde4/networkmanagement_openconnectui.so
 %attr(755,root,root) %{_libdir}/kde4/networkmanagement_pptpui.so
 %attr(755,root,root) %{_libdir}/kde4/networkmanagement_strongswanui.so
 %attr(755,root,root) %{_libdir}/kde4/networkmanagement_vpncui.so
+%attr(755,root,root) %{_libdir}/kde4/solid_networkmanager09.so
 %{_datadir}/apps/networkmanagement
 %{_datadir}/kde4/services/*.desktop
 %{_datadir}/kde4/services/kded/*.desktop
 %{_datadir}/kde4/servicetypes/*.desktop
+%{_datadir}/kde4/services/solidbackends/*.desktop
 %{_iconsdir}/oxygen/*x*/devices/network-wireless*.png
 %{_iconsdir}/oxygen/*x*/devices/network-wired-activated.png
 %{_iconsdir}/oxygen/*x*/devices/network-defaultroute.png
