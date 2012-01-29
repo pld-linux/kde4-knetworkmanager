@@ -2,21 +2,20 @@
 # Conditional build:
 %bcond_with	verbose		# verbose build
 
-%define		snap	20110919
 %define		qtver	4.6.4
 %define		origname	networkmanagement
 
 Summary:	Plasma applet that controls network via NetworkManager backend
 Name:		kde4-knetworkmanager
 Version:	0.9
-Release:	0.%{snap}.3
+Release:	0.rc4.1
 Epoch:		1
 License:	GPL v2
 Group:		X11/Applications
 # git clone git://anongit.kde.org/networkmanagement
 # git checkout nm09 (until is merged to master)
-Source0:	%{origname}-%{snap}.tar.gz
-# Source0-md5:	48e0d3eb19ff53f472d6c5e7a557ee46
+Source0:	ftp://ftp.kde.org/pub/kde/unstable/networkmanagement/0.8.99/src/%{origname}-0.8.99.tar.bz2
+# Source0-md5:	0b432b74b3b0a8fc16d553d4cfc0076c
 URL:		http://en.opensuse.org/Projects/KNetworkManager
 BuildRequires:	NetworkManager-devel >= 2:0.9.0
 BuildRequires:	Qt3Support-devel >= %{qtver}
@@ -43,7 +42,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Plasma applet that controls network via NetworkManager backend.
 
 %prep
-%setup -q -n %{origname}
+%setup -q -n %{origname}-0.8.99
 
 %build
 install -d build
@@ -66,48 +65,54 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} -C build install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%find_lang %{name} --all-name
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc DESIGN TODO
-%config(noreplace) %verify(not md5 mtime size) /etc/dbus-1/system.d/*.conf
-%attr(755,root,root) %ghost %{_libdir}/libknmclient.so.?
-%attr(755,root,root) %{_libdir}/libknmclient.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libknminternals.so.?
-%attr(755,root,root) %{_libdir}/libknminternals.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libknmservice.so.?
-%attr(755,root,root) %{_libdir}/libknmservice.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libknmui.so.?
-%attr(755,root,root) %ghost %{_libdir}/libknmservice.so.?
-%attr(755,root,root) %{_libdir}/libsolidcontrolnm09.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libsolidcontrolnm09.so.?
-%attr(755,root,root) %{_libdir}/libsolidcontrolnm09ifaces.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libsolidcontrolnm09ifaces.so.?
-%attr(755,root,root) %{_libdir}/libknmui.so.*.*.*
-%attr(755,root,root) %{_libdir}/libknm_nm.so
-%attr(755,root,root) %{_libdir}/libknmclient.so
-%attr(755,root,root) %{_libdir}/libknminternals.so
-%attr(755,root,root) %{_libdir}/libknmservice.so
-%attr(755,root,root) %{_libdir}/libknmui.so
-%attr(755,root,root) %{_libdir}/libsolidcontrolfuture.so
+#%config(noreplace) %verify(not md5 mtime size) /etc/dbus-1/system.d/*.conf
+
 %attr(755,root,root) %{_libdir}/kde4/kcm_networkmanagement.so
-%attr(755,root,root) %{_libdir}/kde4/plasma_applet_networkmanagement.so
-%attr(755,root,root) %{_libdir}/kde4/plasma_engine_networkmanagement.so
-%attr(755,root,root) %{_libdir}/kde4/libexec/networkmanagement_configshell
 %attr(755,root,root) %{_libdir}/kde4/kcm_networkmanagement_tray.so
 %attr(755,root,root) %{_libdir}/kde4/kded_networkmanagement.so
+%attr(755,root,root) %{_libdir}/kde4/libexec/networkmanagement_configshell
 %attr(755,root,root) %{_libdir}/kde4/networkmanagement_novellvpnui.so
-%attr(755,root,root) %{_libdir}/kde4/networkmanagement_openvpnui.so
 %attr(755,root,root) %{_libdir}/kde4/networkmanagement_openconnectui.so
+%attr(755,root,root) %{_libdir}/kde4/networkmanagement_openvpnui.so
 %attr(755,root,root) %{_libdir}/kde4/networkmanagement_pptpui.so
 %attr(755,root,root) %{_libdir}/kde4/networkmanagement_strongswanui.so
 %attr(755,root,root) %{_libdir}/kde4/networkmanagement_vpncui.so
+%attr(755,root,root) %{_libdir}/kde4/plasma_applet_networkmanagement.so
+%attr(755,root,root) %{_libdir}/kde4/plasma_engine_networkmanagement.so
 %attr(755,root,root) %{_libdir}/kde4/solid_networkmanager09.so
+%attr(755,root,root) %{_libdir}/libknmclient.so
+%attr(755,root,root) %{_libdir}/libknmclient.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libknmclient.so.?
+%attr(755,root,root) %{_libdir}/libknminternals.so
+%attr(755,root,root) %{_libdir}/libknminternals.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libknminternals.so.?
+%attr(755,root,root) %{_libdir}/libknm_nm.so
+%attr(755,root,root) %{_libdir}/libknmservice.so
+%attr(755,root,root) %{_libdir}/libknmservice.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libknmservice.so.?
+%attr(755,root,root) %{_libdir}/libknmui.so
+%attr(755,root,root) %{_libdir}/libknmui.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libknmui.so.?
+%attr(755,root,root) %{_libdir}/libsolidcontrolfuture.so
+%attr(755,root,root) %{_libdir}/libsolidcontrolnm09ifaces.so
+%attr(755,root,root) %{_libdir}/libsolidcontrolnm09ifaces.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libsolidcontrolnm09ifaces.so.?
+%attr(755,root,root) %{_libdir}/libsolidcontrolnm09.so
+%attr(755,root,root) %{_libdir}/libsolidcontrolnm09.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libsolidcontrolnm09.so.?
+
+%{_datadir}/apps/desktoptheme/default/icons/network2.svgz
 %{_datadir}/apps/networkmanagement
 %{_datadir}/kde4/services/*.desktop
 %{_datadir}/kde4/services/kded/*.desktop
