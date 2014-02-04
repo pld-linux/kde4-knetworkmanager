@@ -94,6 +94,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/networkmanagement_vpncui.so
 %attr(755,root,root) %{_libdir}/kde4/plasma_applet_networkmanagement.so
 %attr(755,root,root) %{_libdir}/kde4/plasma_engine_networkmanagement.so
+%attr(755,root,root) %{_libdir}/kde4/solid_modemmanager05.so
 %attr(755,root,root) %{_libdir}/kde4/solid_networkmanager09.so
 %attr(755,root,root) %{_libdir}/libknmclient.so
 %attr(755,root,root) %{_libdir}/libknmclient.so.*.*.*
@@ -121,6 +122,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/services/*.desktop
 %{_datadir}/kde4/services/kded/*.desktop
 %{_datadir}/kde4/servicetypes/*.desktop
+%{_iconsdir}/oxygen/*x*/apps/networkmanager.png
 %{_iconsdir}/oxygen/*x*/devices/network-wireless*.png
 %{_iconsdir}/oxygen/*x*/devices/network-wired-activated.png
 %{_iconsdir}/oxygen/*x*/devices/network-defaultroute.png
