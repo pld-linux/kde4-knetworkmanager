@@ -17,7 +17,7 @@ Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/unstable/networkmanagement/%{version}/src/%{origname}-%{version}.tar.xz
 # Source0-md5:	9b75b0b731a75fd6c43a85d087d36bf4
 Patch0:	%{origname}-kill_rest_sr.patch
-Patch0:	%{name}-solid.patch
+Patch1:	%{name}-solid.patch
 URL:		http://en.opensuse.org/Projects/KNetworkManager
 BuildRequires:	NetworkManager-devel >= 2:0.9.8
 BuildRequires:	Qt3Support-devel >= %{qtver}
@@ -46,6 +46,7 @@ Plasma applet that controls network via NetworkManager backend.
 %prep
 %setup -q -n %{origname}-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 install -d build
