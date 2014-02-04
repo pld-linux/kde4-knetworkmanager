@@ -1,0 +1,22 @@
+diff -urN networkmanagement-0.9.0.10-orig/solidcontrolfuture/solid/modemmanager-0.5/CMakeLists.txt networkmanagement-0.9.0.10/solidcontrolfuture/solid/modemmanager-0.5/CMakeLists.txt
+--- networkmanagement-0.9.0.10-orig/solidcontrolfuture/solid/modemmanager-0.5/CMakeLists.txt	2013-11-28 12:13:34.000000000 +0100
++++ networkmanagement-0.9.0.10/solidcontrolfuture/solid/modemmanager-0.5/CMakeLists.txt	2014-02-04 21:44:47.138255068 +0100
+@@ -43,6 +43,6 @@
+ target_link_libraries(solid_modemmanager05 ${KDE4_KDECORE_LIBS} ${KDE4_SOLID_LIBS} solidcontrolnm09 solidcontrolnm09ifaces)
+ install(TARGETS solid_modemmanager05 DESTINATION ${PLUGIN_INSTALL_DIR})
+ 
+-install(FILES solid_modemmanager05.desktop DESTINATION ${SERVICES_INSTALL_DIR}/solidbackends )
++install(FILES solid_modemmanager05.desktop DESTINATION ${SERVICES_INSTALL_DIR})
+ 
+ kde4_install_icons( ${ICON_INSTALL_DIR} )
+diff -urN networkmanagement-0.9.0.10-orig/solidcontrolfuture/solid/networkmanager-0.9/CMakeLists.txt networkmanagement-0.9.0.10/solidcontrolfuture/solid/networkmanager-0.9/CMakeLists.txt
+--- networkmanagement-0.9.0.10-orig/solidcontrolfuture/solid/networkmanager-0.9/CMakeLists.txt	2013-11-28 12:13:34.000000000 +0100
++++ networkmanagement-0.9.0.10/solidcontrolfuture/solid/networkmanager-0.9/CMakeLists.txt	2014-02-04 21:44:39.708295319 +0100
+@@ -58,6 +58,6 @@
+ target_link_libraries(solid_networkmanager09 ${KDE4_KDECORE_LIBS} ${KDE4_SOLID_LIBS} solidcontrolnm09 solidcontrolnm09ifaces)
+ install(TARGETS solid_networkmanager09 DESTINATION ${PLUGIN_INSTALL_DIR})
+ 
+-install(FILES solid_networkmanager09.desktop DESTINATION ${SERVICES_INSTALL_DIR}/solidbackends )
++install(FILES solid_networkmanager09.desktop DESTINATION ${SERVICES_INSTALL_DIR})
+ 
+ kde4_install_icons( ${ICON_INSTALL_DIR} )

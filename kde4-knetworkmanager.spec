@@ -8,7 +8,7 @@
 Summary:	Plasma applet that controls network via NetworkManager backend
 Name:		kde4-knetworkmanager
 Version:	0.9.0.10
-Release:	4
+Release:	5
 Epoch:		1
 License:	GPL v2
 Group:		X11/Applications
@@ -17,6 +17,7 @@ Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/unstable/networkmanagement/%{version}/src/%{origname}-%{version}.tar.xz
 # Source0-md5:	9b75b0b731a75fd6c43a85d087d36bf4
 Patch0:	%{origname}-kill_rest_sr.patch
+Patch0:	%{name}-solid.patch
 URL:		http://en.opensuse.org/Projects/KNetworkManager
 BuildRequires:	NetworkManager-devel >= 2:0.9.8
 BuildRequires:	Qt3Support-devel >= %{qtver}
@@ -119,7 +120,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/services/*.desktop
 %{_datadir}/kde4/services/kded/*.desktop
 %{_datadir}/kde4/servicetypes/*.desktop
-%{_datadir}/kde4/services/solidbackends/*.desktop
 %{_iconsdir}/oxygen/*x*/devices/network-wireless*.png
 %{_iconsdir}/oxygen/*x*/devices/network-wired-activated.png
 %{_iconsdir}/oxygen/*x*/devices/network-defaultroute.png
