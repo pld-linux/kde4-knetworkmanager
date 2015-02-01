@@ -28,8 +28,8 @@ BuildRequires:	QtNetwork-devel >= %{qtver}
 BuildRequires:	QtXml-devel >= %{qtver}
 BuildRequires:	automoc4 >= 0.9.88
 BuildRequires:	cmake >= 2.8.0
-BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
-BuildRequires:	kde4-kdelibs-devel >= %{version}
+BuildRequires:	kde4-kdebase-workspace-devel
+BuildRequires:	kde4-kdelibs-devel
 BuildRequires:	mobile-broadband-provider-info-devel
 BuildRequires:	openconnect-devel >= 3.12
 BuildRequires:	openssl-devel
