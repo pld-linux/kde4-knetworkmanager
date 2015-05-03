@@ -8,7 +8,7 @@
 Summary:	Plasma applet that controls network via NetworkManager backend
 Name:		kde4-knetworkmanager
 Version:	0.9.0.11
-Release:	3
+Release:	4
 Epoch:		1
 License:	GPL v2
 Group:		X11/Applications
