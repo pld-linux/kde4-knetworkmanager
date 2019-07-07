@@ -8,11 +8,19 @@
  add_subdirectory(es)
  add_subdirectory(fa)
  add_subdirectory(lt)
-@@ -33,7 +32,6 @@
- add_subdirectory(de)
+@@ -34,7 +33,6 @@
  add_subdirectory(pt)
  add_subdirectory(fr)
+ add_subdirectory(en_GB)
 -add_subdirectory(sr@ijekavianlatin)
  add_subdirectory(se)
  add_subdirectory(et)
  add_subdirectory(mr)
+@@ -46,7 +44,6 @@
+ add_subdirectory(fi)
+ add_subdirectory(zh_TW)
+ add_subdirectory(nl)
+-add_subdirectory(sr@ijekavian)
+ add_subdirectory(ro)
+ add_subdirectory(ja)
+ add_subdirectory(cs)
