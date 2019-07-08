@@ -8,7 +8,7 @@
 Summary:	Plasma applet that controls network via NetworkManager backend
 Name:		kde4-knetworkmanager
 Version:	0.9.0.12
-Release:	0.1
+Release:	1
 Epoch:		1
 License:	GPL v2
 Group:		X11/Applications
@@ -90,6 +90,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/libexec/networkmanagement_configshell
 %attr(755,root,root) %{_libdir}/kde4/networkmanagement_novellvpnui.so
 %attr(755,root,root) %{_libdir}/kde4/networkmanagement_openconnectui.so
+%attr(755,root,root) %{_libdir}/kde4/networkmanagement_openswanui.so
 %attr(755,root,root) %{_libdir}/kde4/networkmanagement_openvpnui.so
 %attr(755,root,root) %{_libdir}/kde4/networkmanagement_pptpui.so
 %attr(755,root,root) %{_libdir}/kde4/networkmanagement_strongswanui.so
