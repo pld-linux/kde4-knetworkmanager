@@ -48,7 +48,7 @@ Plasma applet that controls network via NetworkManager backend.
 %setup -q -n %{origname}-%{version}
 %patch -P0 -p1
 %patch -P1 -p1
-#%patch2 -p1
+#%%patch2 -p1
 
 %build
 install -d build
